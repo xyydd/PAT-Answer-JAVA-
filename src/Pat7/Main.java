@@ -8,7 +8,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         int num = in.nextInt();
-        if (num < 100000) {
+        if (num < 100000 && num >= 0) {
             int res = 0;
             Map<Integer, String> map = new HashMap<>();
             for (int i = 3; i <= num - 2; i++) {
@@ -24,6 +24,8 @@ public class Main {
                 }
             }
             System.out.println(res);
+        } else {
+            System.out.println(0);
         }
     }
     public static Boolean isPrime (Integer a) {
