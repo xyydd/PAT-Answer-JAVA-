@@ -6,44 +6,63 @@ public class Main {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         int num = in.nextInt();
-        if (num > 0 && num <= 100) {
-            int i = 0;
-            String[] str = new String[num];
-            while (i < num) {
-                String s = in.nextLine();
-                if (!s.equals("\\n") && !s.equals("")) {
-                    str[i] = s;
-                    i++;
-                }
+        int i = 0;
+        String[] str = new String[num];
+        int max = -1;
+        String maxName = "", maxId = "";
+        int min = 101;
+        String minName = "", minId = "";
+        while (i < num) {
+            String name = in.next();
+            String id = in.next();
+            int score = in.nextInt();
+            if (score < min) {
+                minName = name;
+                minId = id;
+                min = score;
             }
-            sortGrade(str);
+            if (score > max) {
+                maxName = name;
+                maxId = id;
+                max = score;
+            }
+            i++;
         }
-    }
-    public static void sortGrade (String[] sArr) {
-        int len = sArr.length;
-        String[] z = sArr[0].split(" ");
-        String max = z[0] + " " + z[1];
-        String min = z[0] + " " + z[1];
-        int maxGrade = Integer.parseInt(z[2]);
-        int minGrade = Integer.parseInt(z[2]);
-        for (int i = 0; i < len; i++) {
-            String s = sArr[i];
-            String[] splitS = s.split(" ");
-            int grade = Integer.parseInt(splitS[2]);
-            if (grade > maxGrade) {
-                maxGrade = grade;
-                if (splitS[0].length() <= 10 && splitS[1].length() <= 10) {
-                    max = splitS[0] + " " + splitS[1];
-                }
-            }
-            if (grade < minGrade) {
-                minGrade = grade;
-                if (splitS[0].length() <= 10 && splitS[1].length() <= 10) {
-                    min = splitS[0] + " " + splitS[1];
-                }
-            }
-        }
-        System.out.println(max);
-        System.out.println(min);
+        System.out.println(maxName+" "+maxId);
+        System.out.println(minName+" "+minId);
     }
 }
+//
+//public class Main {
+//
+//    private static class student{
+//        String name;
+//        String id;
+//        int score;
+//    }
+//    public static void main (String[] args){
+//        Scanner sc = new Scanner(System.in);
+//        int n = sc.nextInt();
+//        int maxScore = -1;
+//        int maxId = 0;
+//        int minScore = 101;
+//        int minId = 0;
+//        student[] s = new student[n];
+//        for(int i=0;i<n;i++) {
+//            s[i]=new student();
+//            s[i].name=sc.next();
+//            s[i].id=sc.next();
+//            s[i].score=sc.nextInt();
+//            if(s[i].score>maxScore) {
+//                maxScore=s[i].score;
+//                maxId=i;
+//            }
+//            if(s[i].score<minScore){
+//                minScore=s[i].score;
+//                minId=i;
+//            }
+//        }
+//        System.out.println(s[maxId].name+" "+s[maxId].id);
+//        System.out.println(s[minId].name+" "+s[minId].id);
+//    }
+//}
